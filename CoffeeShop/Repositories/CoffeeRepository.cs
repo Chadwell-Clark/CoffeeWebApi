@@ -122,7 +122,7 @@ namespace CoffeeShop.Repositories
             }
         }
 
-        public void Update(Coffee coffee)
+        public void Update( Coffee coffee)
         {
             using (var conn = Connection)
             {
@@ -135,7 +135,8 @@ namespace CoffeeShop.Repositories
                             BeanVarietyId = @beanVarietyId
                             WHERE Id = @id";
                     cmd.Parameters.AddWithValue("@id", coffee.Id);
-                    cmd.Parameters.AddWithValue("@name", coffee.Title);
+                    cmd.Parameters.AddWithValue("@title", coffee.Title);
+                    cmd.Parameters.AddWithValue("@beanVarietyId", coffee.BeanVarietyId);
 
                     cmd.ExecuteNonQuery();
                 }
