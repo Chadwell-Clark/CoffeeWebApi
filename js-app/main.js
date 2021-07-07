@@ -34,8 +34,10 @@ const getAllBeanVarieties =() =>{
 }
 
 const BeanVarHtmlRep = (obj) => {
+    const notes = obj.notes? obj.notes : "";
     return(`
-    <div> ${obj.name}</div>
+    <div> Coffee Bean Variety :  ${obj.name}  From :  ${obj.region}  Notes : ${notes}</div>
+    
     `)
 };
 
