@@ -7,15 +7,17 @@ button.addEventListener("click", () => {
     getAllBeanVarieties()
         .then(beanVarieties => {
             console.log(beanVarieties);
+            let HTMLForDOM = "";
             beanVarieties.forEach(element => {
-                DOMLocation.innerHTML = element;
+                HTMLForDOM += BeanVarHtmlRep(element);
+            
             });
+            DOMLocation.innerHTML = HTMLForDOM;
     getAllCoffees()
         .then(coffees => {
             console.log(coffees);
-            coffees.forEach(element => {
-                DOMLocation.innerHTML = element;
-            });
+            
+            
             
         })
 });
@@ -23,6 +25,12 @@ button.addEventListener("click", () => {
 function getAllBeanVarieties() {
     return fetch(beanUrl).then(resp => resp.json());
 }
+
+const BeanVarHtmlRep = (obj) => {
+    return(`
+    <div> ${obj.name}</div>
+    `)
+};
 
 function getAllCoffees() {
     return fetch(coffeeUrl).then(resp => resp.json());
